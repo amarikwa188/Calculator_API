@@ -11,7 +11,7 @@ def add():
             data: bytes = request.get_data()
             json_data: dict = json.loads(data)
 
-            result: int = sum(json_data.values())
+            result: int = json_data["a"] + json_data["b"]
             return {'result': result}
         except json.JSONDecodeError:
             return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
