@@ -14,7 +14,8 @@ def add():
             result: int = json_data["a"] + json_data["b"]
             return {'result': result}
         except json.JSONDecodeError:
-            return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
+            return {'error': 'invalid input: input format -> '\
+                    '{"a":int, "b":int}'}
 
 @app.route("/subtract", methods=["POST"])
 def subtract():
@@ -26,7 +27,8 @@ def subtract():
             result: int = json_data['a'] - json_data['b']
             return {'result': result}
         except json.JSONDecodeError:
-            return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
+            return {'error': 'invalid input: input format -> '\
+                    '{"a":int, "b":int}'}
         
 @app.route("/multiply", methods=["POST"])
 def multiply():
@@ -38,7 +40,8 @@ def multiply():
             result: int = json_data["a"] * json_data["b"]
             return {'result': result}
         except json.JSONDecodeError:
-            return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
+            return {'error': 'invalid input: input format -> '\
+                    '{"a":int, "b":int}'}
         
 @app.route("/divide", methods=["POST"])
 def divide():
@@ -50,7 +53,10 @@ def divide():
             result: int = round(json_data["a"] / json_data["b"], 3)
             return {'result': result}
         except json.JSONDecodeError:
-            return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
+            return {'error': 'invalid input: input format -> '\
+                    '{"a":int, "b":int}'}
+        except ZeroDivisionError:
+            return {'error': 'divisor cannot be zero'}
         
 @app.route("/sum", methods=["POST"])
 def sum_array():
