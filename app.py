@@ -47,10 +47,22 @@ def divide():
             data: bytes = request.get_data()
             json_data: dict = json.loads(data)
 
-            result: int = json_data["a"] / json_data["b"]
+            result: int = round(json_data["a"] / json_data["b"], 3)
             return {'result': result}
         except json.JSONDecodeError:
             return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
+        
+@app.route("/sum", methods=["POST"])
+def sum_array():
+    if request.method == "POST":
+        try:
+            data: bytes = request.get_data()
+            json_data: dict = json.loads(data)
+            result: int = sum(json_data["nums"])
+            return {'result': result}
+        except json.JSONDecodeError:
+            return 'ERROR::Invalid Input -> input format: {"nums": [a,b,c...]}'
+
 
 
 if __name__ == "__main__":
