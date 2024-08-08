@@ -4,7 +4,7 @@ import json
 app: Flask = Flask(__name__)
 
 
-@app.route("/add/", methods=["POST"])
+@app.route("/add", methods=["POST"])
 def add():
     if request.method == "POST":
         try:
@@ -16,7 +16,7 @@ def add():
         except json.JSONDecodeError:
             return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
 
-@app.route("/subtract/", methods=["POST"])
+@app.route("/subtract", methods=["POST"])
 def subtract():
     if request.method == "POST":
         try:
@@ -28,7 +28,7 @@ def subtract():
         except json.JSONDecodeError:
             return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
         
-@app.route("/multiply/", methods=["POST"])
+@app.route("/multiply", methods=["POST"])
 def multiply():
     if request.method == "POST":
         try:
@@ -40,7 +40,7 @@ def multiply():
         except json.JSONDecodeError:
             return 'ERROR::Invalid Input -> input format: {"a":int, "b":int}'
         
-@app.route("/divide/", method=["POST"])
+@app.route("/divide", methods=["POST"])
 def divide():
     if request.method == "POST":
         try:
