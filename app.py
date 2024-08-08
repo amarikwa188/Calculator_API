@@ -61,8 +61,8 @@ def sum_array():
             result: int = sum(json_data["nums"])
             return {'result': result}
         except json.JSONDecodeError:
-            return 'ERROR::Invalid Input -> input format: {"nums": [a,b,c...]}'
-
+            return 'ERROR::Invalid Input -> input format: '\
+                   '{"nums": [a: int, b: int, c: int...]}'
 
 
 if __name__ == "__main__":
