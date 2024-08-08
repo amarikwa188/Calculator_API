@@ -50,7 +50,7 @@ def divide():
             data: bytes = request.get_data()
             json_data: dict = json.loads(data)
 
-            result: int = round(json_data["a"] / json_data["b"], 3)
+            result: float = round(json_data["a"] / json_data["b"], 3)
             return {'result': result}
         except json.JSONDecodeError:
             return {'error': 'invalid input: input format -> '\
